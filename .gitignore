@@ -1,0 +1,13 @@
+target/
+dbt_packages/
+logs/
+.docker-root/
+.cargo/
+.gitpod/
+.pyenv_mirror/
+.vscode-remote/
+.idea
+*.zip
+/audience_measurement/logs/
+/venv/
+.user.yml

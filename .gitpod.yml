@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.Dockerfile
+checkoutLocation: '.'
+vscode:
+  extensions:
+    - mtxr.sqltools-driver-pg
+    - mtxr.sqltools
+    - innoverio.vscode-dbt-power-user
+    - ms-python.python
