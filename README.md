@@ -14,7 +14,8 @@ Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https:/
 ## Things to do
 
 * Open the repo in Gitpod (see above)
-* Run `dbt run` to run the dbt project
-* In the SQLTools extension on the left, check out the tables and views that dbt created. The password is "postgres".
-* When editing a model, use the DBT Power User buttons on the top-right, or use shortcuts like ctrl+enter to run the selected text as a query
+* Run `dbt run` to run the dbt project and materialize the 2 models.
+* In the SQLTools extension on the left, check out the table(s) and view(s) that dbt created.
+* When editing a model, use the DBT Power User buttons on the top-right, or use shortcuts
+like ctrl+enter to run the selected text as a query
 * Have fun!
