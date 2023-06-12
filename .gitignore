@@ -11,3 +11,4 @@ logs/
 /audience_measurement/logs/
 /venv/
 .user.yml
+.pgsql/

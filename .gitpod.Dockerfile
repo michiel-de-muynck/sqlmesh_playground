@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
-    pip install dbt-snowflake
+    pip install dbt-postgres
 
 # Copy exercices content into the image
 # COPY --chown=gitpod content/ /home/gitpod/dbt_audiance_measurment
