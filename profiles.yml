@@ -1,0 +1,12 @@
+dbt_playground:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: gitpod
+      password: postgres
+      port: 5432
+      dbname: postgres
+      schema: dbt_playground
+      threads: 3
