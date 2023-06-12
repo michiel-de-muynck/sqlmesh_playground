@@ -44,6 +44,6 @@ models:
         +schema: jaffle_shop_staging
 
 seeds:
-  jaffle_shop:
-    +schema: jaffle_shop_seeds
-  
+  dbt_playground:
+    jaffle_shop:
+      +schema: jaffle_shop_seeds
