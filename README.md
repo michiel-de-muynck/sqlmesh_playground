@@ -12,7 +12,7 @@ Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-ref
 If the above button doesn't work (depends on your browser), use the one below:
 
 [![Open in
-Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Migi/dbt_playground.git)
+Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datamindedacademy/dbt_playground.git)
 
 ## Features
 
