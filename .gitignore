@@ -12,3 +12,7 @@ logs/
 /venv/
 .user.yml
 .pgsql/
+.env/
+.venv/
+__pycache__/
+.cache/

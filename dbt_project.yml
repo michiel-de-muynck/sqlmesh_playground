@@ -42,6 +42,7 @@ models:
       staging:
         +materialized: view
         +schema: jaffle_shop_staging
+  +start: "Jan 1 2000"
 
 seeds:
   dbt_playground:
