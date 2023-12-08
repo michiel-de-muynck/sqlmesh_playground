@@ -12,7 +12,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/* && \    pip install "dbt-core==1.4.9" "dbt-postgres==1.4.9" "sqlmesh[web,dbt,postgres]==0.58.2"
+    rm -rf /tmp/* && \
+    pip install "dbt-core==1.4.9" "dbt-postgres==1.4.9" \
+    # pip install "sqlmesh[web,dbt,github,postgres]==0.58.2" is very slow because pip install duckdb takes forever
+    # see https://stackoverflow.com/a/74078882
 
 USER gitpod
 
