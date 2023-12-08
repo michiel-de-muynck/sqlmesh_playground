@@ -1,4 +1,4 @@
-FROM gitpod/workspace-postgres:2023-04-20-16-32-37
+FROM gitpod/workspace-postgres:2023-11-24-15-04-57
 
 
 # This env var is used to force the 
@@ -13,10 +13,7 @@ RUN apt-get update && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
-    pip install dbt-postgres
-
-# Copy exercices content into the image
-# COPY --chown=gitpod content/ /home/gitpod/dbt_audiance_measurment
+    pip install "dbt-core==1.4.9" "dbt-postgres==1.4.9" "sqlmesh[web,dbt,github,postgres]==0.56.4"
 
 USER gitpod
 
