@@ -1,5 +1,0 @@
-.cache/
-.venv/
-logs/
-db.db
-db.db.wal
