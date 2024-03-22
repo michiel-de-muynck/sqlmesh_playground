@@ -1,4 +1,4 @@
-FROM gitpod/workspace-postgres:2024-01-24-09-19-42
+FROM gitpod/workspace-postgres:2024-03-20-07-19-19
 
 # This env var is used to force the 
 # rebuild of the Gitpod environment when needed
@@ -12,6 +12,6 @@ RUN apt-get update && \
     rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
-    pip install "duckdb==0.9.3.dev2938" "sqlmesh[web,github,postgres]==0.68.4"
+    pip install "duckdb==0.10.1" "sqlmesh[web,github,postgres]==0.80.1"
 
 USER gitpod
