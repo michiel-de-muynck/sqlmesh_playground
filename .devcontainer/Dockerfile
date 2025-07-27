@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV PYTHONUNBUFFERED 1
 
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 # Uncomment this to install node and the duckdb-async npm module
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 # ARG NODE_VERSION="lts/*"
@@ -12,6 +15,6 @@ ENV PYTHONUNBUFFERED 1
 
 USER vscode
 
-RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"
-
 RUN curl https://install.duckdb.org | sh
+
+RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"

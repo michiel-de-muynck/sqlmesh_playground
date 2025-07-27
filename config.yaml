@@ -1,10 +1,18 @@
 gateways:
     local:
+        # Use this to use DuckDB as the DWH
+        # connection:
+        #     type: duckdb
+        #     catalogs:
+        #         persistent: 'local.duckdb'
+        #         ephemeral: ':memory:'
         connection:
-            type: duckdb
-            catalogs:
-                persistent: 'local.duckdb'
-                ephemeral: ':memory:'
+            type: postgres
+            host: localhost
+            user: postgres
+            password: postgres
+            port: 5432
+            database: postgres
         state_connection:
             type: postgres
             host: localhost
