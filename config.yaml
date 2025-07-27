@@ -3,7 +3,7 @@ gateways:
         connection:
             type: postgres
             host: localhost
-            user: gitpod
+            user: postgres
             password: postgres
             port: 5432
             database: postgres

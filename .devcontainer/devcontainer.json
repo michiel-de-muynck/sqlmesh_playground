@@ -26,6 +26,8 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
+				"mtxr.sqltools-driver-pg",
+    			"mtxr.sqltools",
                 "tobikodata.sqlmesh"
             ]
 		}

@@ -1,8 +1,0 @@
-image:
-  file: .gitpod.Dockerfile
-checkoutLocation: '.'
-vscode:
-  extensions:
-    - mtxr.sqltools-driver-pg
-    - mtxr.sqltools
-    - ms-python.python
