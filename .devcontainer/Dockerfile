@@ -4,4 +4,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp]==0.204.0"
+RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"

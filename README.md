@@ -1,12 +1,11 @@
 # SQLMesh Playground
 
 This repository is a self-contained SQLMesh project that you can run with one click in a
-Gitpod workspace.
+Github Codespace.
 
 Click the button below to open this repository in a Gitpod:
 
-[![Open in
-Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/michiel-de-muynck/sqlmesh_playground)
 
 Then wait a few minutes and... that's it! You have a working SQLMesh project with
 a Postgres database.
