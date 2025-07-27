@@ -16,3 +16,6 @@ logs/
 __pycache__/
 .cache/
 *.log
+*.duckdb
+*.gz
+node_modules

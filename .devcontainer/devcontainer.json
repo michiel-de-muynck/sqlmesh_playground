@@ -31,7 +31,10 @@
                 "tobikodata.sqlmesh"
             ]
 		}
-	}
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	},
+	"remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/vscode/.duckdb/cli/latest"
+	},
+	// More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "vscode"
 }

@@ -1,6 +1,11 @@
 gateways:
     local:
         connection:
+            type: duckdb
+            catalogs:
+                persistent: 'local.duckdb'
+                ephemeral: ':memory:'
+        state_connection:
             type: postgres
             host: localhost
             user: postgres

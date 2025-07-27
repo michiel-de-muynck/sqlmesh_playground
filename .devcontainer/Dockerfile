@@ -4,4 +4,12 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV PYTHONUNBUFFERED 1
 
+# Uncomment this to install node and the duckdb-async npm module
+# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
+# ARG NODE_VERSION="lts/*"
+# RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+# RUN npm install -g "duckdb-async@1.3.2"
+
 RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"
+
+RUN curl https://install.duckdb.org | sh
