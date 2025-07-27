@@ -7,8 +7,10 @@
             "driver": "PostgreSQL",
             "name": "postgres",
             "database": "postgres",
-            "username": "gitpod",
+            "username": "postgres",
             "password": "postgres"
         }
-    ]
+    ],
+    "sqltools.codelensLanguages": [],
+    "sqltools.completionLanguages": []
 }
