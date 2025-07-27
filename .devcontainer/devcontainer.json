@@ -27,9 +27,10 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"mtxr.sqltools-driver-pg",
-    			"mtxr.sqltools",
-                "tobikodata.sqlmesh"
-            ]
+				"mtxr.sqltools",
+				"tobikodata.sqlmesh",
+				"ms-azuretools.vscode-containers"
+			]
 		}
 	},
 	"remoteEnv": {

@@ -10,6 +10,8 @@ ENV PYTHONUNBUFFERED 1
 # RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 # RUN npm install -g "duckdb-async@1.3.2"
 
+USER vscode
+
 RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"
 
 RUN curl https://install.duckdb.org | sh
