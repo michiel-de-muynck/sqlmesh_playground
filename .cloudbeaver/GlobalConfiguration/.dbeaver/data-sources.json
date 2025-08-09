@@ -1,15 +1,24 @@
 {
   "folders": {},
   "connections": {
-    "postgres_db": {
-      "driverId": "postgresql",
-      "name": "Postgres DB",
-      "host": "db",
-      "port": "5432",
-      "database": "postgres",
-      "userName": "postgres",
-      "password": "postgres",
-      "savePassword": true
+    "local_postgres_db": {
+      "provider": "postgresql",
+      "driver": "postgres-jdbc",
+      "name": "local_postgres_db",
+      "description": "Local PostgreSQL DB",
+      "save-password": true,
+      "show-system-objects": false,
+      "read-only": false,
+      "configuration": {
+        "user": "postgres",
+        "host": "db",
+        "port": "5432",
+        "database": "postgres",
+        "url": "jdbc:postgresql://db:5432/postgres",
+        "type": "dev",
+        "provider-properties": {},
+        "auth-model": "native"
+      }
     }
   }
 }
