@@ -1,0 +1,15 @@
+{
+  "folders": {},
+  "connections": {
+    "postgres_db": {
+      "driverId": "postgresql",
+      "name": "Postgres DB",
+      "host": "db",
+      "port": "5432",
+      "database": "postgres",
+      "userName": "postgres",
+      "password": "postgres",
+      "savePassword": true
+    }
+  }
+}

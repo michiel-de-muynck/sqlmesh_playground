@@ -20,3 +20,8 @@ __pycache__/
 *.wal
 *.gz
 node_modules
+
+# cloudbeaver
+.database-credentials.dat
+*.dat.mv.db
+*.dat.trace.db

@@ -49,7 +49,7 @@ services:
     ports:
       - "8978:8978"
     volumes:
-      - ../.cloudbeaver2:/opt/cloudbeaver/
+      - ../.cloudbeaver:/opt/cloudbeaver/workspace/
       - ..:/workspace:cached
     depends_on:
       - db
