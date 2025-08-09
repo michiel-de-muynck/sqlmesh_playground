@@ -37,5 +37,6 @@
         "PATH": "${containerEnv:PATH}:/home/vscode/.duckdb/cli/latest"
 	},
 	// More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"forwardPorts": [8978]
 }
