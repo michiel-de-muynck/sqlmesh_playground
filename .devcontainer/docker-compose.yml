@@ -43,5 +43,16 @@ services:
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    restart: unless-stopped
+    ports:
+      - "8978:8978"
+    volumes:
+      - ../.cloudbeaver2:/opt/cloudbeaver/
+      - ..:/workspace:cached
+    depends_on:
+      - db
+
 volumes:
   postgres-data:
