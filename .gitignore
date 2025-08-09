@@ -25,3 +25,4 @@ node_modules
 .database-credentials.dat
 *.dat.mv.db
 *.dat.trace.db
+dbeaver-instance.properties
