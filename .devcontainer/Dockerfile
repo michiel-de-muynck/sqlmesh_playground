@@ -17,4 +17,4 @@ USER vscode
 
 RUN curl https://install.duckdb.org | sh
 
-RUN pip install "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"
+RUN pip install --no-warn-script-location "duckdb==1.3.2" "sqlmesh[web,github,postgres,lsp,duckdb]==0.204.0"
