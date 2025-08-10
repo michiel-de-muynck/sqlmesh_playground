@@ -1,25 +1,43 @@
 {
-  "folders": {},
-  "connections": {
-    "local_postgres_db": {
-      "provider": "postgresql",
-      "driver": "postgres-jdbc",
-      "name": "local_postgres_db",
-      "description": "Local PostgreSQL DB",
-      "save-password": true,
-      "show-system-objects": false,
-      "read-only": false,
-      "configuration": {
-        "user": "postgres",
-        "password": "postgres",
-        "host": "db",
-        "port": "5432",
-        "database": "postgres",
-        "url": "jdbc:postgresql://db:5432/postgres",
-        "type": "dev",
-        "provider-properties": {},
-        "auth-model": "native"
-      }
-    }
-  }
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-198937758b7-4380243a4dda483f": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "postgres",
+			"save-password": true,
+			"navigator-show-only-entities": true,
+			"navigator-hide-folders": true,
+			"navigator-hide-virtual": true,
+			"configuration": {
+				"host": "db",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://db:5432/postgres",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
 }
