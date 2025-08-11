@@ -38,8 +38,8 @@
 	},
 	// More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "vscode",
-	"forwardPorts": [8978],
-	"features": {
-        "ghcr.io/devcontainers/features/docker-outside-of-docker": {}
-    }
+	"forwardPorts": [8978]
+	// "features": {
+    //     "ghcr.io/devcontainers/features/docker-outside-of-docker": {}
+    // }
 }
