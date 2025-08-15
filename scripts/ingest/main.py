@@ -15,18 +15,20 @@ def ingest_data(start: str, num_hours: int):
 
     for i in range(num_hours):
         hour_to_ingest = (start_dt + timedelta(hours=i)).strftime("%Y-%m-%d-%H")
-        # ATTACH 'dbname=postgres user=postgres host=127.0.0.1' AS pg_db (TYPE postgres);
+        # 
         print(duckdb.sql(
             f"""
             LOAD POSTGRES;
 
-            CREATE TABLE ingest_data AS
+            ATTACH 'dbname=postgres user=postgres host=127.0.0.1' AS pg_db (TYPE postgres);
+
+            CREATE TABLE pg_db.ingest_data AS
             SELECT * FROM read_json(
                 'https://data.gharchive.org/{hour_to_ingest}.json.gz',
                 sample_size=-1
             );
 
-            DESCRIBE SELECT * FROM ingest_data
+            DESCRIBE SELECT * FROM pg_db.postgres.ingest_data
             """
         ))
 
