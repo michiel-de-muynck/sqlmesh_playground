@@ -12,13 +12,13 @@ gateways:
         #     password: postgres
         #     port: 5432
         #     database: postgres
-        state_connection:
-            type: postgres
-            host: localhost
-            user: postgres
-            password: postgres
-            port: 5432
-            database: postgres
+        # state_connection:
+        #     type: postgres
+        #     host: localhost
+        #     user: postgres
+        #     password: postgres
+        #     port: 5432
+        #     database: postgres
 
 default_gateway: local
 

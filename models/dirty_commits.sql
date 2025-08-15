@@ -4,4 +4,4 @@ MODEL (
 );
 
 select *
-from gharchive.commits_incremental
+from gharchive.commits
