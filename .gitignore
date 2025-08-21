@@ -20,6 +20,7 @@ __pycache__/
 *.wal
 *.gz
 node_modules
+.tmp
 
 # cloudbeaver
 .database-credentials.dat
