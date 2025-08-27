@@ -17,7 +17,5 @@ test_example_full_model:
       rows:
       - item_id: 1
         num_orders: 2
-        foo: 'a'
       - item_id: 2
         num_orders: 1
-        foo: 'a'

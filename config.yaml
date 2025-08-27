@@ -24,3 +24,5 @@ default_gateway: local
 
 model_defaults:
     dialect: duckdb
+    cron: "@hourly"
+    start: "2025-01-01 00:00"
