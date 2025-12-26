@@ -1,12 +1,13 @@
 /*
-Specifying columns explicitly is not nessary and generally to be avoided
+Specifying columns explicitly is not nessary and should generally be avoided
 in sqlmesh (it deduces column types automatically from SQL).
 However, since the data source is READ_JSON("https://..."), sqlmesh cannot
 deduce column types. Therefore we specify them explicitly.
+
 This is not like dbt contracts, which checks the columns and data types.
 Instead, sqlmesh creates/updates the underlying table with the specified
-data types and (depending on the DWH) may error when inserting if you
-specified wrong datatypes.
+data types and _may_ (depending on the DWH) error when trying to insert
+data of the wrong datatypes.
 */
 MODEL (
   name gharchive.events,
@@ -35,20 +36,29 @@ SELECT
   actor.login AS actor_login,
   payload.ref,
   payload.commits
+/*
+sqlmesh evaluates this sql several times,
+* once to create the table. At this time, @runtime_stage is 'creating' and
+  @start_dt is 1970-01-01 (not data at that time in gharchive.org!)
+* once per "batch" to fill it. Then @runtime_stage is 'evaluating' and
+  @start_dt/@end_dt get filled in appropriately
+In order to improve performance of sqlmesh parsing this SQL, we only read
+the real network data (with READ_JSON) when @runtime_stage = 'evaluating'.
+*/
 FROM @IF(
+  -- Use READ_JSON when runtime_stage is 'evaluating' (see above)
   @runtime_stage = 'evaluating',
-  -- 1. Real Source: Only runs when actually processing data
   READ_JSON(
     'https://data.gharchive.org/' || STRFTIME(@start_dt AT TIME ZONE 'UTC', '%Y-%m-%d-%-H') || '.json.gz',
     sample_size = -1
   ),
-  -- 2. Dummy Source: Runs during creation/validation (No Network)
+  -- Use dummy data otherwise
   (
     SELECT
       NULL AS id,
       NULL AS type,
-      {'login': NULL} AS actor,                -- Mock struct for actor.login
-      {'ref': NULL, 'commits': NULL} AS payload -- Mock struct for payload.ref/commits
+      {'login': NULL} AS actor,
+      {'ref': NULL, 'commits': NULL} AS payload
     WHERE 1=0
   )
 )
