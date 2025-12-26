@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 ENV PYTHONUNBUFFERED 1
 
 # Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.9.18-python3.12-bookworm /uv /uvx /bin/
 
 # Uncomment this to install node and the duckdb-async npm module
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
