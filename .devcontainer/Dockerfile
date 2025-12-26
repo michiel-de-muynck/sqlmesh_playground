@@ -20,7 +20,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 USER vscode
 
 # Workaround for weird issue
-RUN UV_TOOL_BIN_DIR=/home/root/.local/sqlmesh_lsp_bin/ uv tool install "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
+RUN UV_TOOL_BIN_DIR=/home/vscode/.local/sqlmesh_lsp_bin/ uv tool install "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
 
 RUN uv pip install --no-warn-script-location "duckdb==1.4.3" "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
 
