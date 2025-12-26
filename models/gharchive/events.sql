@@ -35,19 +35,20 @@ SELECT
   actor.login AS actor_login,
   payload.ref,
   payload.commits
-/*
-sqlmesh evaluates this sql several times,
-* once to create the table. At this time, @runtime_stage is 'creating' and
-  @start_dt is 1970-01-01 (not data at that time in gharchive.org!)
-* once per "batch" to fill it. Then @runtime_stage is 'evaluating' and
-  @start_dt/@end_dt get filled in appropriately
-Therefore, we use @if to use a later date if @runtime_stage is 'evaluating'
-*/
-FROM READ_JSON(
-  'https://data.gharchive.org/' || @IF(
-    @runtime_stage = 'evaluating',
-    STRFTIME(@start_dt AT TIME ZONE 'UTC', '%Y-%m-%d-%-H'),
-    '2025-02-03-4'
-  ) || '.json.gz',
-  sample_size = -1
+FROM @IF(
+  @runtime_stage = 'evaluating',
+  -- 1. Real Source: Only runs when actually processing data
+  READ_JSON(
+    'https://data.gharchive.org/' || STRFTIME(@start_dt AT TIME ZONE 'UTC', '%Y-%m-%d-%-H') || '.json.gz',
+    sample_size = -1
+  ),
+  -- 2. Dummy Source: Runs during creation/validation (No Network)
+  (
+    SELECT
+      NULL AS id,
+      NULL AS type,
+      {'login': NULL} AS actor,                -- Mock struct for actor.login
+      {'ref': NULL, 'commits': NULL} AS payload -- Mock struct for payload.ref/commits
+    WHERE 1=0
+  )
 )

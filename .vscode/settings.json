@@ -12,5 +12,6 @@
         }
     ],
     "sqltools.codelensLanguages": [],
-    "sqltools.completionLanguages": []
+    "sqltools.completionLanguages": [],
+    "sqlmesh.lspEntrypoint": "/home/vscode/.local/bin/sqlmesh_lsp"
 }
