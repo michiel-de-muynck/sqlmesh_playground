@@ -8,16 +8,12 @@ services:
       - ..:/workspace:cached
 
     user: vscode
-    
-    # Keep the container running
+
+    # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
-    depends_on:
-      db:
-        condition: service_healthy
-
   db:
-    image: postgres:16
+    image: postgres:17
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -25,7 +21,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
-
+    ports:
+      - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s

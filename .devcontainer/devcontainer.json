@@ -6,7 +6,6 @@
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {
 				"python.defaultInterpreterPath": "/usr/local/bin/python",
@@ -38,8 +37,12 @@
 	},
 	// More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "vscode",
-	"forwardPorts": [8978],
+	// Enable docker CLI command to get postgres logs
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2.13.0": {}
-	}
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.5": {}
+    },
+	"containerEnv": {
+		// Can't use a too-new Docker API version if using docker-outside-of-docker
+        "DOCKER_API_VERSION": "1.43"
+    }
 }

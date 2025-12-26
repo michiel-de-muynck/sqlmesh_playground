@@ -2,7 +2,7 @@
     "sqltools.connections": [
         {
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "db",
             "port": 5432,
             "driver": "PostgreSQL",
             "name": "postgres",
@@ -13,5 +13,5 @@
     ],
     "sqltools.codelensLanguages": [],
     "sqltools.completionLanguages": [],
-    "sqlmesh.lspEntrypoint": "/home/vscode/.local/bin/sqlmesh_lsp"
+    "sqlmesh.lspEntrypoint": "/home/vscode/.local/sqlmesh_lsp_bin/sqlmesh_lsp"
 }
