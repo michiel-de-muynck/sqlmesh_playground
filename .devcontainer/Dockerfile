@@ -3,7 +3,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV PYTHONUNBUFFERED 1
 
-# Install xdg-utils (needed for `duckdb -ui` to open the browser)
+# Install tools:
+# - xdg-utils (needed for `duckdb -ui` to open the browser)
+# - psql (send SQL queries to postgres directly, e.g. for the `make clean` command or debugging)
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends xdg-utils \
     && rm -rf /var/lib/apt/lists/*
@@ -11,17 +13,16 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 
-# Uncomment this to install node and the duckdb-async npm module (not tested)
-# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-# ARG NODE_VERSION="lts/*"
-# RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
-# RUN npm install -g "duckdb-async@1.3.2"
+# Install sqlmesh and the DuckDB Python library system-wide
+RUN uv pip install --system "duckdb==1.4.3" "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
 
+# Do the rest of the config/installation as user vscode
 USER vscode
 
-# Workaround for weird issue
-RUN UV_TOOL_BIN_DIR=/home/vscode/.local/sqlmesh_lsp_bin/ uv tool install "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
-
-RUN uv pip install --no-warn-script-location "duckdb==1.4.3" "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
-
+# Install the DuckDB CLI
 RUN curl https://install.duckdb.org | sh
+
+# There is a weird issue that the sqlmesh extension crashes if using `sqlmesh` in the terminal.
+# I actually don't know what is causing this.
+# Using `uvx sqlmesh` does not have the same issue, so I use that as a workaround to get the extension working.
+RUN echo 'alias sqlmesh="uvx sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"' >> /home/vscode/.bashrc

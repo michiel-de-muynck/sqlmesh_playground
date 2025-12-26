@@ -14,7 +14,7 @@ of all public Github events, commits, issues, PRs, etc.
 
 The data can be downloaded in compressed jsons containing all events of one
 hour of Github activity. For example, https://data.gharchive.org/2024-11-27-14.json.gz
-contains all events from 2024-11-27 from 14:00-15:00.
+contains all events from 2024-11-27 from 14:00-15:00. Each hour is about ~170 MB.
 
 For documentation regarding the various event types and contents of the
 corresponding jsons, see
@@ -54,13 +54,15 @@ sqlmesh fetchdf "select * from gharchive.funny_commits"
 ```
 
 However, this command does not display long strings (such as commit messages) well at
-all, and there are no CLI arguments to change its formatting (yet). I vibe coded a hacky
-workaround: I made a `sitecustomize.py` script, which if it is on your `PYTHONPATH`
-and if the env var `NOCROP` is 1, alters Pandas global settings to sqlmesh display
-dataframes without cutting off rows, colums or long strings. To use it:
-```
-PYTHONPATH=. NOCROP=1 sqlmesh fetchdf "select * from gharchive.funny_commits"
-```
+all, and there are no CLI arguments to change its formatting (yet).
+
+Another approach to view data is to use the DuckDB UI via `duckdb -ui`, make sure to
+attach the `local.duckdb` database as alias `persistent`. I made a command `make ui`
+that does both. The downside of this approach is that you cannot both have the UI open
+and also make changes with `sqlmesh`: duckdb does not allow modifying while reading.
+
+If you ever want to start over, cleaning both data and metadata (which is stored in
+Postgres), you can use `make clean`.
 
 ## Exercises
 
