@@ -5,7 +5,7 @@ MODEL (
 
 SELECT
   message,
-  url
+  url,
+  push_timestamp
 FROM gharchive.commits
-WHERE
-  LOWER(message) LIKE '%fuck%'
+WHERE has_funny_message

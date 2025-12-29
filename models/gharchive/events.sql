@@ -23,7 +23,8 @@ MODEL (
     type TEXT,
     actor_login TEXT,
     ref TEXT,
-    commits STRUCT(sha TEXT, author STRUCT(email TEXT, "name" TEXT), message TEXT, "distinct" BOOLEAN, url TEXT)[]
+    commits STRUCT(sha TEXT, author STRUCT(email TEXT, "name" TEXT), message TEXT, "distinct" BOOLEAN, url TEXT)[],
+    event_timestamp TIMESTAMPTZ
   )
 );
 
@@ -35,7 +36,8 @@ SELECT
   type,
   actor.login AS actor_login,
   payload.ref,
-  payload.commits
+  payload.commits,
+  created_at AS event_timestamp
 /*
 sqlmesh evaluates this sql several times,
 * once to create the table. At this time, @runtime_stage is 'creating' and
@@ -58,7 +60,8 @@ FROM @IF(
       NULL AS id,
       NULL AS type,
       {'login': NULL} AS actor,
-      {'ref': NULL, 'commits': NULL} AS payload
+      {'ref': NULL, 'commits': NULL} AS payload,
+      NULL AS created_at
     WHERE 1=0
   )
 )
