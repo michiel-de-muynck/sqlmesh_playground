@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED 1
 # - xdg-utils (needed for `duckdb -ui` to open the browser)
 # - psql (send SQL queries to postgres directly, e.g. for the `make clean` command or debugging)
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends xdg-utils \
+    && apt-get -y install --no-install-recommends xdg-utils postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv
