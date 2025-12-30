@@ -1,5 +1,9 @@
 test_example_full_model:
   model: sqlmesh_example.full_model
+
+  # You can run this test on Postgres by uncommenting the line below
+  # gateway: postgres_testing_connection
+
   inputs:
     sqlmesh_example.incremental_model:
       rows:

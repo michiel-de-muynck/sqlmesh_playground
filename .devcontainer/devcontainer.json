@@ -6,32 +6,52 @@
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {
-				"python.defaultInterpreterPath": "/usr/local/bin/python",
-				"python.linting.enabled": true,
-				"python.linting.pylintEnabled": true,
-				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-				"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
-				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
-            },
+				"sqltools.connections": [
+					{
+						"previewLimit": 50,
+						"server": "db",
+						"port": 5432,
+						"driver": "PostgreSQL",
+						"name": "postgres",
+						"database": "postgres",
+						"username": "postgres",
+						"password": "postgres"
+					}
+				],
+				"sqltools.codelensLanguages": [],
+				"sqltools.completionLanguages": [],
+				"python.defaultInterpreterPath": "/opt/sqlmesh_venv/bin/python",
+				"sqlmesh.lspEntrypoint": "/opt/sqlmesh_venv/bin/sqlmesh_lsp",
+				"jupyter.askForKernelRestart": false,
+				"python.terminal.activateEnvironment": true,
+				"python.terminal.activateEnvInCurrentTerminal": true,
+				"python.terminal.shellIntegration.enabled": true,
+				"terminal.integrated.shellIntegration.enabled": true
+			},
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"mtxr.sqltools-driver-pg",
-    			"mtxr.sqltools",
-                "tobikodata.sqlmesh"
-            ]
+				"mtxr.sqltools",
+				"tobikodata.sqlmesh",
+				"ms-azuretools.vscode-containers",
+				"ms-toolsai.jupyter"
+			]
 		}
+	},
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/home/vscode/.duckdb/cli/latest"
+	},
+	// More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "vscode",
+	// Enable docker CLI command to get postgres logs
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.5": {}
+	},
+	"containerEnv": {
+		// Can't use a too-new Docker API version if using docker-outside-of-docker
+		"DOCKER_API_VERSION": "1.43"
 	}
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
 }

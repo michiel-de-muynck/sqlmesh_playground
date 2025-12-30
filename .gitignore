@@ -16,3 +16,15 @@ logs/
 __pycache__/
 .cache/
 *.log
+*.duckdb
+*.wal
+*.gz
+node_modules
+.tmp
+*.egg-info
+
+# cloudbeaver
+.database-credentials.dat
+*.dat.mv.db
+*.dat.trace.db
+dbeaver-instance.properties

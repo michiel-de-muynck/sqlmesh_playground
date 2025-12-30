@@ -1,14 +1,40 @@
+model_defaults:
+    dialect: duckdb
+    cron: "@hourly"
+    start: "2025-01-01 00:00"
+
+default_gateway: local
+
 gateways:
     local:
+        # Where data is stored
         connection:
+            type: duckdb
+            catalogs:
+                persistent: 'local.duckdb'
+                ephemeral: ':memory:'
+        # Where state (run metadata) is stored
+        state_connection:
             type: postgres
-            host: localhost
+            host: db
             user: postgres
             password: postgres
             port: 5432
             database: postgres
+        # Where tests are run
+        test_connection:
+            type: duckdb
 
-default_gateway: local
-
-model_defaults:
-    dialect: postgres
+    # Optional gateway you could use to run tests on Postgres (if you would want that)
+    postgres_testing_connection:
+        connection:
+            type: duckdb
+        state_connection:
+            type: duckdb
+        test_connection:
+            type: postgres
+            host: db
+            user: postgres
+            password: postgres
+            port: 5432
+            database: postgres
