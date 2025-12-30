@@ -21,6 +21,7 @@ __pycache__/
 *.gz
 node_modules
 .tmp
+*.egg-info
 
 # cloudbeaver
 .database-credentials.dat

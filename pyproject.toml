@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlmesh-notebook-environment"
+version = "0.1.0"
+description = "Not really a Python project, just used to do dependency locking for SQLMesh and Python libraries in this devcontainer"
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.13"  # Best to keep in sync with .devcontainer/Dockerfile
+
+dependencies = [
+    "sqlmesh[web,github,postgres,lsp,duckdb]",
+    "ipykernel",
+    "jupyter_client",
+    "jupyter_core",
+    "ipython",
+    "pandas",
+    "duckdb-engine",
+    "sqlalchemy",
+    "duckdb",
+    "matplotlib"
+]
+
+[tool.setuptools]
+packages = []

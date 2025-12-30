@@ -13,8 +13,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 
-# Install sqlmesh and the DuckDB Python library system-wide
-RUN uv pip install --system "duckdb==1.4.3" "sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"
+ADD pyproject.toml uv.lock /tmp/sqlmesh-notebook-environment/
+
+# Install Python libraries (sqlmesh and some libraries used in the notebooks) system-wide
+RUN uv pip install --system /tmp/sqlmesh-notebook-environment/
 
 # Do the rest of the config/installation as user vscode
 USER vscode
