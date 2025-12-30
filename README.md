@@ -20,5 +20,5 @@ More info about this repository can be found in `docs/`:
 
 - `data_source.md`: explanation of the data source (GHarchive)
 - `project_structure.md`: stand-alone description of the repo structure
-- `known_issues.md`: explanation of (*many*) issues encountered with SQLMesh while
+- `known_issues.md`: explanation of (several) issues encountered with SQLMesh while
   developing this repo.

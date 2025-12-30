@@ -2,7 +2,8 @@ MODEL (
   name gharchive.commits_stats_per_hour,
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column hour
-  )
+  ),
+  audits [assert_nonnegative_num_commits]
 );
 
 SELECT

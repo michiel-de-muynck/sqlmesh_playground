@@ -2,6 +2,9 @@ MODEL (
   name gharchive.commits,
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column hour
+  ),
+  audits (
+    not_null(columns := (hour, push_timestamp, sha, message, author_name, author_email, url))
   )
 );
 

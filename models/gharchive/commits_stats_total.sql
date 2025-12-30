@@ -1,6 +1,7 @@
 MODEL (
   name gharchive.commits_stats_total,
-  kind FULL
+  kind FULL,
+  audits [assert_nonnegative_num_commits]
 );
 
 SELECT

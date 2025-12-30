@@ -25,6 +25,9 @@ MODEL (
     ref TEXT,
     commits STRUCT(sha TEXT, author STRUCT(email TEXT, "name" TEXT), message TEXT, "distinct" BOOLEAN, url TEXT)[],
     event_timestamp TIMESTAMPTZ
+  ),
+  audits (
+    not_null(columns := (id, hour, type))
   )
 );
 

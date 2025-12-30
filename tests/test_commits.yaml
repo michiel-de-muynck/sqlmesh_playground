@@ -1,0 +1,48 @@
+test_gharchive_commits:
+  model: gharchive.commits
+  inputs:
+    gharchive.events:
+      rows:
+        - type: 'PushEvent'
+          hour: '2025-01-01 12:00:00'
+          event_timestamp: '2025-01-01 12:05:00'
+          ref: 'refs/heads/main'
+          actor_login: 'test_user'
+          commits:
+            - sha: 'sha_1'
+              author:
+                email: 'alice@example.com'
+                name: 'Alice'
+              message: 'Regular bug fix'
+              distinct: true
+              url: 'http://github.com/1'
+            - sha: 'sha_2'
+              author:
+                email: 'alice@example.com'
+                name: 'Alice'
+              message: 'Another ordinary bug fix'
+              distinct: true
+              url: 'http://github.com/2'
+  outputs:
+    query:
+      rows:
+        - hour: '2025-01-01 12:00:00'
+          push_timestamp: '2025-01-01 12:05:00'
+          pushed_ref: 'refs/heads/main'
+          sha: 'sha_1'
+          message: 'Regular bug fix'
+          author_name: 'Alice'
+          author_email: 'alice@example.com'
+          url: 'http://github.com/1'
+          push_actor_login: 'test_user'
+          has_funny_message: false
+        - hour: '2025-01-01 12:00:00'
+          push_timestamp: '2025-01-01 12:05:00'
+          pushed_ref: 'refs/heads/main'
+          sha: 'sha_2'
+          message: 'Another ordinary bug fix'
+          author_name: 'Alice'
+          author_email: 'alice@example.com'
+          url: 'http://github.com/2'
+          push_actor_login: 'test_user'
+          has_funny_message: false
