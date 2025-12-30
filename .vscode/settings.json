@@ -13,7 +13,7 @@
     ],
     "sqltools.codelensLanguages": [],
     "sqltools.completionLanguages": [],
-    "python.defaultInterpreterPath": "/home/vscode/venv/bin/python",
+    "python.defaultInterpreterPath": "/opt/venv/bin/python",
     "jupyter.askForKernelRestart": false,
     "python.terminal.activateEnvironment": true,
     "python.terminal.activateEnvInCurrentTerminal": true,

@@ -18,11 +18,11 @@ WORKDIR /tmp/sqlmesh_notebook_env/
 
 ADD pyproject.toml uv.lock ./
 
-ENV UV_PROJECT_ENVIRONMENT=/home/vscode/venv
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv
 
 # Install Python libraries (sqlmesh and some libraries used in the notebooks)
-# to venv /home/vscode/venv
-RUN uv sync
+# to venv /opt/venv
+RUN uv sync --frozen
 
 # Install the DuckDB CLI
 RUN curl https://install.duckdb.org | sh
