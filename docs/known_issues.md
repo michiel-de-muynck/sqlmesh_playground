@@ -33,10 +33,11 @@ Restarting the VSCode extension (F1 > SQLMesh: Restart Servers) or reloading the
 (F1 > Developer: Reload Window) fixes it temporarily, until the next `sqlmesh` terminal
 command.
 
-Strangely, running `sqlmesh` commands via either a Jupyter notebook (using `!`) or via
-`uvx` (`uvx sqlmesh`) does not cause this crash. I do not know what causes the issue
-(I suspect it may be fighting with the Python VSCode extension somehow). As a workaround,
-this playground aliases `sqlmesh` to `uvx sqlmesh`.
+Using a virtual environment instead of installing sqlmesh to the system environment,
+the extension still crashes and you still get error messages, but the extension does
+recover after a few seconds.
+
+I reported this issue as Github issue https://github.com/TobikoData/sqlmesh/issues/5642
 
 ## Models with model kind "FULL" not always materialized
 

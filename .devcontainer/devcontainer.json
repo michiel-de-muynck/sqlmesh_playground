@@ -7,6 +7,29 @@
 	"workspaceFolder": "/workspace",
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"sqltools.connections": [
+					{
+						"previewLimit": 50,
+						"server": "db",
+						"port": 5432,
+						"driver": "PostgreSQL",
+						"name": "postgres",
+						"database": "postgres",
+						"username": "postgres",
+						"password": "postgres"
+					}
+				],
+				"sqltools.codelensLanguages": [],
+				"sqltools.completionLanguages": [],
+				"python.defaultInterpreterPath": "/opt/sqlmesh_venv/bin/python",
+				"sqlmesh.lspEntrypoint": "/opt/sqlmesh_venv/bin/sqlmesh_lsp",
+				"jupyter.askForKernelRestart": false,
+				"python.terminal.activateEnvironment": true,
+				"python.terminal.activateEnvInCurrentTerminal": true,
+				"python.terminal.shellIntegration.enabled": true,
+				"terminal.integrated.shellIntegration.enabled": true
+			},
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",

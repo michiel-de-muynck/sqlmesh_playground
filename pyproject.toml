@@ -22,7 +22,7 @@ dependencies = [
     "duckdb-engine",
     "sqlalchemy",
     "duckdb",
-    "matplotlib"
+    "matplotlib",
 ]
 
 [tool.setuptools]

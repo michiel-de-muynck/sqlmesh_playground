@@ -13,16 +13,23 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 
-USER vscode
-WORKDIR /tmp/sqlmesh_notebook_env/
+WORKDIR /tmp/build_sqlmesh_notebook_env/
 
 ADD pyproject.toml uv.lock ./
 
-ENV UV_PROJECT_ENVIRONMENT=/opt/venv
+ENV UV_PROJECT_ENVIRONMENT=/opt/sqlmesh_venv
 
 # Install Python libraries (sqlmesh and some libraries used in the notebooks)
-# to venv /opt/venv
-RUN uv sync --frozen
+# to venv /opt/sqlmesh_venv
+RUN uv venv /opt/sqlmesh_venv --seed && uv sync --frozen
+
+# chown the venv to vscode to avoid permission issues
+RUN chown -R vscode:vscode /opt/sqlmesh_venv 
+
+USER vscode
+
+# Register the venv as a Jupyter kernel
+RUN /opt/sqlmesh_venv/bin/python -m ipykernel install --user --name=sqlmesh_venv --display-name "sqlmesh_venv"
 
 # Install the DuckDB CLI
 RUN curl https://install.duckdb.org | sh
