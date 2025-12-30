@@ -34,8 +34,9 @@ Restarting the VSCode extension (F1 > SQLMesh: Restart Servers) or reloading the
 command.
 
 Strangely, running `sqlmesh` commands via either a Jupyter notebook (using `!`) or via
-`uvx` (`uvx sqlmesh`) does not cause this crash. I do not know what causes the issue,
-but as a workaround, this playground aliases `sqlmesh` to `uvx sqlmesh`.
+`uvx` (`uvx sqlmesh`) does not cause this crash. I do not know what causes the issue
+(I suspect it may be fighting with the Python VSCode extension somehow). As a workaround,
+this playground aliases `sqlmesh` to `uvx sqlmesh`.
 
 ## Models with model kind "FULL" not always materialized
 

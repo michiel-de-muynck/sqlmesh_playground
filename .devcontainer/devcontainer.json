@@ -28,7 +28,8 @@
 				"mtxr.sqltools-driver-pg",
 				"mtxr.sqltools",
 				"tobikodata.sqlmesh",
-				"ms-azuretools.vscode-containers"
+				"ms-azuretools.vscode-containers",
+				"ms-toolsai.jupyter"
 			]
 		}
 	},

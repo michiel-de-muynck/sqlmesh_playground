@@ -13,18 +13,16 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 
-ADD pyproject.toml uv.lock /tmp/sqlmesh-notebook-environment/
-
-# Install Python libraries (sqlmesh and some libraries used in the notebooks) system-wide
-RUN uv pip install --system /tmp/sqlmesh-notebook-environment/
-
-# Do the rest of the config/installation as user vscode
 USER vscode
+WORKDIR /tmp/sqlmesh_notebook_env/
+
+ADD pyproject.toml uv.lock ./
+
+ENV UV_PROJECT_ENVIRONMENT=/home/vscode/venv
+
+# Install Python libraries (sqlmesh and some libraries used in the notebooks)
+# to venv /home/vscode/venv
+RUN uv sync
 
 # Install the DuckDB CLI
 RUN curl https://install.duckdb.org | sh
-
-# There is a weird issue that the sqlmesh extension crashes if using `sqlmesh` in the terminal.
-# I actually don't know what is causing this.
-# Using `uvx sqlmesh` does not have the same issue, so I use that as a workaround to get the extension working.
-RUN echo 'alias sqlmesh="uvx sqlmesh[web,github,postgres,lsp,duckdb]==0.228.1"' >> /home/vscode/.bashrc
